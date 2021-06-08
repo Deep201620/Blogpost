@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block content %}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="post">Add post</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="about">About us</a>
+  </li>
+</ul>
+<h1>My Blog</h1>
+{% for post in posts %}
+<table>
+  <div class="card-body" style="border:1px solid black">
+    <h5 class="card-title date"><a href="{{ post.get_absolute_url }}">
+    {{ post.title }}
+    </a><br>
+    Published {{ post.publish }} by {{ post.author }}
+    </h5>
+    <p class="card-text">{{ post.body|truncatewords:30|linebreaks }}</p>
+  </div>
+</div>
+</table>
+{% endfor %}
+{% include "blog/pagination.html" with page=page_obj %}
+{% endblock %}
+
+
