@@ -16,7 +16,7 @@ def about(request):
 def post_blog(request):
     posted = False
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             posted = True
@@ -49,7 +49,7 @@ def post_share(request, post_id):
 class PostListView(ListView):
     queryset = Post.published.all()
     context_object_name = 'posts'
-    paginate_by = 4
+    paginate_by = 3
     template_name = 'blog/post/list.html'
 
 

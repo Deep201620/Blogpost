@@ -19,8 +19,9 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'slug', 'author', 'body')
+        fields = ('title', 'slug', 'author', 'body', 'file')
 
         help_texts = {
-            'slug': _('A unique label related to you title.'),
-        }
+            'slug': _('A unique label can be same as your title without spaces .'),
+    }
+

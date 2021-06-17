@@ -5,10 +5,13 @@
 <p class="date" >
 Published {{ post.publish }} by {{ post.author }}
 </p>
-<p style="border:1px solid black"><strong>{{ post.body|linebreaks }}</strong></p>
+<p style="border:1px solid black"><strong>{{ post.body|linebreaks  }}</strong></p>
+<label>Media:-</label>
+<p><a href="{{post.file.url}}">
+    <input type="button" class="btn" style="border-radius:5px; border-color:orange" value="{{post.file}}"></a></p>
 <p>
 <a href="{% url "blog:post_share"  post.id %}">
-<input type="button" value="Share this post">
+<input type="button" class="btn-outline-primary" style="border-radius:5px" value="Share this post">
 </a>
 <!-- SHare buttons from Add to any -->
 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -47,7 +50,7 @@ Comment {{ forloop.counter }} by {{ comment.name }}
 <form action="." method="post">
 {{ comment_form.as_p }}
 {% csrf_token %}
-<p><input type="submit" value="Add comment"></p>
+<p><input type="submit" class="btn" style="border-radius:5px; border-color:blue" value="Add comment"></p>
 </form>
 {% endif %}
 
